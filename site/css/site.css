@@ -1,6 +1,6 @@
 /**
  * Alaska Skydive Center — standalone site.
- * Real photos: /site-assets/*.jpg from ./public (sync from platform-py uploads/public_site/1).
+ * Real photos: /site-assets/*.jpg from ./public/ (git-tracked; optional sync from platform-py).
  * If a file is missing, <img onerror> removes or hides it and gradients show.
  */
 :root {
