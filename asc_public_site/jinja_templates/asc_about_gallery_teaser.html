@@ -1,0 +1,15 @@
+    <section class="ps-about-section ps-about-gallery-teaser ps-wrap" aria-labelledby="gallery-heading">
+      <div class="ps-section__head">
+        <h2 id="gallery-heading">Your new adventure</h2>
+        <p>Where friends become family.</p>
+      </div>
+      {% if about_gallery_urls %}
+      <div class="ps-about-gallery-grid">
+        {% for src in about_gallery_urls %}
+        <figure class="ps-about-gallery-item">
+          <img src="{{ src }}" alt="" width="900" height="600" loading="lazy" decoding="async">
+        </figure>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </section>

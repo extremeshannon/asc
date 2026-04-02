@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "asc-public-site"
+version = "0.1.0"
+description = "Alaska Skydive Center public marketing site plugin for MalfunctionDZ platform"
+readme = "README.md"
+requires-python = ">=3.11"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["asc_public_site*"]
