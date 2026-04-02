@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+# Image URLs are served by ASC Nginx from this repo’s public/ → /site-assets/ (not platform uploads/).
+_SITE = "/site-assets"
+
 # Same keys as platform EXPERIENCE_ORDER; copy and paths are ASC-only.
 BASE_EXPERIENCE_PAGES: dict[str, dict] = {
     "freefall": {
@@ -16,7 +19,7 @@ BASE_EXPERIENCE_PAGES: dict[str, dict] = {
             "When the parachute opens, the ride shifts from fast and loud to calm and scenic — "
             "but the freefall chapter is the one guests talk about for years.",
         ],
-        "hero_image": "/uploads/public_site/1/gallery-01-tandem.jpg",
+        "hero_image": f"{_SITE}/gallery-01-tandem.jpg",
     },
     "tandem-exit": {
         "title": "Door exit",
@@ -29,7 +32,7 @@ BASE_EXPERIENCE_PAGES: dict[str, dict] = {
             "We brief every tandem guest on arch, hand placement, and what to expect from climb-out through exit. "
             "Safety and clear communication come first; the epic view from the door is a close second.",
         ],
-        "hero_image": "/uploads/public_site/1/gallery-04-climbout.jpg",
+        "hero_image": f"{_SITE}/gallery-04-climbout.jpg",
     },
     "canopy-ride": {
         "title": "Canopy ride",
@@ -42,7 +45,7 @@ BASE_EXPERIENCE_PAGES: dict[str, dict] = {
             "We coach lift your legs for landing so you finish standing or sliding in gently — "
             "then it is high-fives, photos, and the grin that does not quit.",
         ],
-        "hero_image": "/uploads/public_site/1/gallery-02-landing.jpg",
+        "hero_image": f"{_SITE}/gallery-02-landing.jpg",
     },
     "learn-to-skydive": {
         "title": "Learn to skydive",
@@ -56,14 +59,14 @@ BASE_EXPERIENCE_PAGES: dict[str, dict] = {
             "Start with a tandem if you are unsure, or talk to our team about scheduling your first AFF ground school. "
             "We will map a path that fits your schedule and goals.",
         ],
-        "hero_image": "/uploads/public_site/1/gallery-03-solo.jpg",
+        "hero_image": f"{_SITE}/gallery-03-solo.jpg",
     },
 }
 
 
 def home_experience_tiles(dz_slug: str) -> list[dict]:
     """Home band: L→R freefall, door exit, canopy ride, learn to skydive."""
-    base = "/uploads/public_site/1"
+    base = _SITE
     rows = [
         (f"{base}/gallery-01-tandem.jpg", "FREEFALL", "freefall"),
         (f"{base}/gallery-04-climbout.jpg", "DOOR EXIT", "tandem-exit"),
