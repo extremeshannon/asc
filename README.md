@@ -14,7 +14,9 @@ Open **http://localhost:8006/** (or `http://YOUR_SERVER_IP:8006/`).
 
 ## Images
 
-Add photos under `public/` — see `public/README.txt`. Same filenames as your dev hero/gallery if you want it to match.
+The HTML loads `/site-assets/*.jpg` from `public/` (`hero-main.jpg`, `gallery-01-tandem.jpg`, … — same output as `platform-py/scripts/process_public_site_photos.py`).
+
+After generating JPEGs in platform-py, run **`make sync-photos`** from this repo (or see `public/README.txt`).
 
 ## Edit copy
 

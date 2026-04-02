@@ -1,6 +1,6 @@
 # Alaska Skydive Center static site — port 8006
 
-.PHONY: up down verify open
+.PHONY: up down verify open sync-photos
 
 up:
 	docker compose up -d
@@ -14,3 +14,6 @@ verify:
 
 open:
 	@echo "http://localhost:8006/"
+
+sync-photos:
+	@bash scripts/sync_public_site_photos.sh

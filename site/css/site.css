@@ -1,6 +1,7 @@
 /**
  * Alaska Skydive Center — standalone site.
- * Hero/tiles use gradients until you add real photos to public/ (see public/README.txt).
+ * Real photos: /site-assets/*.jpg from ./public (sync from platform-py uploads/public_site/1).
+ * If a file is missing, <img onerror> removes or hides it and gradients show.
  */
 :root {
   --ps-dark: #0b1220;
@@ -86,7 +87,7 @@
   color: #0b1220 !important;
 }
 
-/* Hero: real photo only if you set --ps-hero-bg on .ps-hero-full; else Alaska-style gradient */
+/* Hero: optional photo (hero-main.jpg) under gradient scrim */
 .ps-hero-full {
   position: relative;
   min-height: min(88vh, 900px);
@@ -96,9 +97,19 @@
   padding: 0 20px 56px;
   overflow: hidden;
 }
+.ps-hero-full__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  z-index: 0;
+}
 .ps-hero-full__bg {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background-color: #1a2744;
   background-image: var(
     --ps-hero-bg,
@@ -106,6 +117,15 @@
   );
   background-size: cover;
   background-position: center 40%;
+}
+.ps-hero-full--has-photo .ps-hero-full__bg {
+  background-color: rgba(26, 39, 68, 0.22);
+  background-image: linear-gradient(
+    165deg,
+    rgba(30, 74, 120, 0.42) 0%,
+    rgba(11, 18, 32, 0.55) 42%,
+    rgba(12, 74, 110, 0.38) 100%
+  );
 }
 .ps-hero-full__bg::after {
   content: "";
@@ -240,11 +260,24 @@
   text-decoration: none !important;
   border: 1px solid var(--ps-border);
 }
+.ps-tile__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
 .ps-tile__fill {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: var(--tile-grad);
   transition: transform 0.35s ease, filter 0.35s ease;
+}
+.ps-tile--has-photo .ps-tile__fill {
+  background: linear-gradient(to top, rgba(11, 18, 32, 0.93) 0%, rgba(11, 18, 32, 0.25) 52%, transparent 78%);
 }
 .ps-tile:hover .ps-tile__fill {
   transform: scale(1.04);
@@ -266,7 +299,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-align: center;
-  z-index: 1;
+  z-index: 2;
 }
 
 .ps-wrap {
@@ -342,12 +375,22 @@
   gap: 12px;
 }
 .ps-about-gallery-item {
+  position: relative;
   margin: 0;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--ps-border);
   min-height: 180px;
   background: var(--gal-grad);
+}
+.ps-about-gallery-item img {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  object-fit: cover;
 }
 .ps-about-gallery-item--1 { --gal-grad: linear-gradient(145deg, #1e3a5f, #0f172a); }
 .ps-about-gallery-item--2 { --gal-grad: linear-gradient(145deg, #312e81, #0f172a); }
@@ -410,10 +453,22 @@
   display: flex;
   align-items: flex-end;
   padding: 40px 20px 32px;
+  overflow: hidden;
+}
+.ps-page-hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
 }
 .ps-page-hero__bg {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background-color: #1a2744;
   background-image: var(
     --ps-page-hero-bg,
@@ -421,6 +476,15 @@
   );
   background-size: cover;
   background-position: center;
+}
+.ps-page-hero--has-photo .ps-page-hero__bg {
+  background-color: rgba(26, 39, 68, 0.2);
+  background-image: linear-gradient(
+    to top,
+    rgba(11, 18, 32, 0.9) 0%,
+    rgba(11, 18, 32, 0.38) 52%,
+    rgba(11, 18, 32, 0.22) 100%
+  );
 }
 .ps-page-hero--freefall .ps-page-hero__bg {
   --ps-page-hero-bg: linear-gradient(155deg, #1e4976 0%, #0b1220 60%, #075985 100%);

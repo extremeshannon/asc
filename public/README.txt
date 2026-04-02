@@ -1,11 +1,18 @@
-Optional: your real ASC photos (not required — the site uses styled gradients until you add files).
+These JPEGs power the standalone site at /site-assets/… (same names as MalfunctionDZ branding):
 
-If you have JPGs from dev, put them here and add one line to site/index.html inside <head>:
+  hero-main.jpg
+  gallery-01-tandem.jpg
+  gallery-02-landing.jpg
+  gallery-03-solo.jpg
+  gallery-04-climbout.jpg
 
-  <style>.ps-hero-full { --ps-hero-bg: url("/site-assets/hero.jpg"); }</style>
+Generate them in platform-py from source PNGs:
 
-Suggested names:
-  hero.jpg
-  gallery-01-tandem.jpg … gallery-04-climbout.jpg
+  docker exec platform_py python scripts/process_public_site_photos.py
 
-We do not ship random internet stock photos — only your images belong here.
+Then copy into this folder (from ASC repo root):
+
+  make sync-photos
+  # or: PLATFORM_PY=/path/to/platform-py bash scripts/sync_public_site_photos.sh
+
+If a file is missing, the site falls back to gradients (no broken image icons).
