@@ -16,6 +16,7 @@ services:
   nginx:
     image: nginx:1.25-alpine
     container_name: asc_nginx_dev
+    restart: unless-stopped
     ports:
       - "8095:80"
     volumes:

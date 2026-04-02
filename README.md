@@ -58,10 +58,13 @@ See `deploy/env.example`.
 If you want an extra Nginx on **8095** (same proxy rules as the main platform front), from **this** repo:
 
 ```bash
-docker compose up -d
+make up
+# or: docker compose up -d
 ```
 
 Open [http://localhost:8095](http://localhost:8095). Requires the external Docker network `platform_platform` (created when the main `platform` stack is up).
+
+If the browser shows **connection refused**, the Nginx container is not running — run `make up` (or `docker compose up -d`) from this directory after the platform and platform-py stacks are up.
 
 Config file: `deploy/nginx/default.conf` — copy or mount the same file on your VPS Nginx container or host Nginx.
 
