@@ -1,0 +1,29 @@
+# Optional Nginx front for local dev when the main platform stack is already running.
+#
+# Prerequisites:
+#   1. From the MalfunctionDZ `platform` repo: `docker compose up -d` (creates network platform_platform).
+#   2. From `platform-py`: `docker compose up -d` (starts platform_py with ASC mounted).
+#
+# Then from this repo:
+#   docker compose up -d
+#
+# Site: http://localhost:8095  (avoids clashing with platform nginx on 8080)
+#
+# VPS: use the same `deploy/nginx/default.conf` with your host nginx or a container
+# on the same user-defined network as `platform_py`.
+
+services:
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: asc_nginx_dev
+    ports:
+      - "8095:80"
+    volumes:
+      - ./deploy/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - platform_platform
+
+networks:
+  platform_platform:
+    name: platform_platform
+    external: true
