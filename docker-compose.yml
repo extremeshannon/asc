@@ -14,4 +14,5 @@ services:
     volumes:
       - ./deploy/nginx/standalone.conf:/etc/nginx/conf.d/default.conf:ro
       - ./site:/usr/share/nginx/html:ro
+      # Sibling of html (not under html/) — Docker cannot nest a mount inside a :ro html volume
       - ./public:/usr/share/nginx/site-assets:ro

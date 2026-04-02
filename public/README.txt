@@ -1,4 +1,7 @@
-These JPEGs power the standalone site at /site-assets/… (same names as MalfunctionDZ branding):
+These JPEGs power the standalone site at /site-assets/… (same names as MalfunctionDZ branding).
+
+Docker maps this folder to /usr/share/nginx/site-assets in the container; nginx uses
+`root /usr/share/nginx` for /site-assets/ so URLs resolve to files here (not under html/).
 
   hero-main.jpg
   gallery-01-tandem.jpg
