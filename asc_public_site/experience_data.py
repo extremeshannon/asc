@@ -68,7 +68,7 @@ def home_experience_tiles(dz_slug: str) -> list[dict]:
         (f"{base}/gallery-01-tandem.jpg", "FREEFALL", "freefall"),
         (f"{base}/gallery-04-climbout.jpg", "DOOR EXIT", "tandem-exit"),
         (f"{base}/gallery-02-landing.jpg", "CANOPY RIDE", "canopy-ride"),
-        (f"{base}/gallery-03-solo.jpg", "LEARN TO SKYDIVE", "learn-to-skydive"),
+        (f"{base}/gallery-03-solo.jpg", "LEARN TO SKYDIVE", "asp"),
     ]
     return [
         {"url": url, "caption": cap, "href": f"/dz/{dz_slug}/{path}"}
