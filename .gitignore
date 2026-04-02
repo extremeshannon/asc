@@ -8,3 +8,4 @@ build/
 
 # Use public/ for marketing images (/site-assets/), not uploads/
 uploads/
+*:Zone.Identifier
