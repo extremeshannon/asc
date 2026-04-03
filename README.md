@@ -1,6 +1,6 @@
 # Alaska Skydive Center — website only
 
-This repo is **only** the public Alaska Skydive Center site: **HTML + CSS** in `site/`, images in **`public/`** (served at `/site-assets/…`).  
+This repo is **only** the public Alaska Skydive Center site: **HTML + CSS** in `site/`, optional images in `public/`.  
 **No MalfunctionDZ, no platform-py, no database, no Python runtime for the live site.**
 
 ## Run (VPS or laptop)
@@ -14,17 +14,9 @@ Open **http://localhost:8006/** (or `http://YOUR_SERVER_IP:8006/`).
 
 ## Images
 
-JPEGs live in **`public/`** and are **git-tracked** so deploys include them. URLs are always **`/site-assets/filename.jpg`** (never `platform-py/uploads/` for these):
+The HTML loads `/site-assets/*.jpg` from `public/` (`hero-main.jpg`, `gallery-01-tandem.jpg`, … — same output as `platform-py/scripts/process_public_site_photos.py`).
 
-| File | Typical use |
-|------|-------------|
-| `hero-main.jpg` | Home hero |
-| `gallery-01-tandem.jpg` | Tandem / freefall tile |
-| `gallery-02-landing.jpg` | Landing / canopy tile |
-| `gallery-03-solo.jpg` | Training / ASP tile |
-| `gallery-04-climbout.jpg` | Door exit tile |
-
-To regenerate from source PNGs in platform-py, run `process_public_site_photos.py`, then from this repo: **`make sync-photos`** (see `public/README.txt`).
+After generating JPEGs in platform-py, run **`make sync-photos`** from this repo (or see `public/README.txt`).
 
 ## Edit copy
 
@@ -36,8 +28,8 @@ Contact, pricing, team, and homepage blurbs are synced from the public content o
 
 ## Domain + HTTPS
 
-Point **dev.alaskaskydivecenter.com** at your VPS, then use host Nginx (or Caddy) to reverse-proxy to **127.0.0.1:8006** and terminate TLS. You only need this Docker container for the ASC site.
+**https://dev.alaskaskydivecenter.com** should be this ASC site only: host Nginx (or Caddy) must **`proxy_pass` to `127.0.0.1:8006`**, not to MalfunctionDZ on `:8000`. Sample configs live in the platform repo: `infra/nginx/dev.alaskaskydivecenter.com.conf` (HTTPS) and `…-http-only.conf`. On the VPS, do **not** set `PUBLIC_SITE_ROOT_HOSTS=dev.alaskaskydivecenter.com` in `platform-py` — that is for hostnames that hit the FastAPI app, not this static stack.
 
 ## Optional: `asc_public_site/` Python package
 
-Unused for serving this standalone site. If you use it with MalfunctionDZ elsewhere, marketing image paths there use the same **`/site-assets/…`** URLs so files stay in this repo’s `public/`.
+Unused for serving the website. Keep it only if you use it elsewhere for copy defaults.
