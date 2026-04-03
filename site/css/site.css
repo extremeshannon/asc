@@ -14,6 +14,13 @@
   --ps-muted: rgba(241, 245, 249, 0.72);
   --ps-border: rgba(255, 255, 255, 0.12);
   --ps-bar: linear-gradient(90deg, #b91c1c, #fff 50%, #1d4ed8);
+  /* Light band (home tiles + stats + welcome) — like legacy public site */
+  --ps-light-bg: #e8ecf0;
+  --ps-light-panel: #f4f6f8;
+  --ps-light-text: #0f172a;
+  --ps-light-muted: #475569;
+  --ps-stats-sky: #7cc8ff;
+  --ps-stats-sky-border: rgba(255, 255, 255, 0.45);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -119,23 +126,24 @@
   background-position: center 40%;
 }
 .ps-hero-full--has-photo .ps-hero-full__bg {
-  background-color: rgba(26, 39, 68, 0.22);
+  background-color: rgba(255, 255, 255, 0.08);
   background-image: linear-gradient(
     165deg,
-    rgba(30, 74, 120, 0.42) 0%,
-    rgba(11, 18, 32, 0.55) 42%,
-    rgba(12, 74, 110, 0.38) 100%
+    rgba(100, 160, 210, 0.35) 0%,
+    rgba(15, 23, 42, 0.28) 45%,
+    rgba(120, 180, 220, 0.25) 100%
   );
 }
 .ps-hero-full__bg::after {
   content: "";
   position: absolute;
   inset: 0;
+  /* Lighter wash — readable type without crushing the photo */
   background: linear-gradient(
     to top,
-    rgba(11, 18, 32, 0.95) 0%,
-    rgba(11, 18, 32, 0.4) 50%,
-    rgba(11, 18, 32, 0.2) 100%
+    rgba(15, 23, 42, 0.55) 0%,
+    rgba(15, 23, 42, 0.18) 48%,
+    rgba(255, 255, 255, 0.02) 100%
   );
 }
 .ps-hero-full__inner {
@@ -149,12 +157,12 @@
 .ps-hero-full__eyebrow {
   display: inline-block;
   margin-bottom: 1.25rem;
-  padding: 6px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  font-size: 0.68rem;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(255, 255, 255, 0.98);
 }
 .ps-hero-full__title {
   margin: 0 0 1rem;
@@ -177,10 +185,10 @@
 .ps-hero-full__title-line--accent { color: var(--ps-ice); }
 .ps-hero-full__sub {
   margin: 0 0 1.75rem;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.94);
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
@@ -189,12 +197,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 32px;
+  padding: 16px 36px;
   border-radius: 4px;
   background: var(--ps-ice);
   color: #0b1220 !important;
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none !important;
@@ -233,7 +241,11 @@
   text-transform: uppercase;
 }
 
-/* Tiles: gradient panels (no fake stock photos). Add real JPGs later via optional .ps-tile--photo + background-image */
+/* Tiles + stats: light band (legacy ASC / MalfunctionDZ public look) */
+.ps-body--home .ps-tiles {
+  padding: 40px 20px 28px;
+  background: var(--ps-light-bg);
+}
 .ps-tiles {
   padding: 48px 20px 56px;
   background: var(--ps-dark);
@@ -250,6 +262,10 @@
 }
 @media (max-width: 480px) {
   .ps-tiles__inner { grid-template-columns: 1fr; }
+}
+.ps-body--home .ps-tile {
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
 }
 .ps-tile {
   position: relative;
@@ -277,12 +293,20 @@
   transition: transform 0.35s ease, filter 0.35s ease;
 }
 .ps-tile--has-photo .ps-tile__fill {
-  background: linear-gradient(to top, rgba(11, 18, 32, 0.93) 0%, rgba(11, 18, 32, 0.25) 52%, transparent 78%);
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.12) 55%, transparent 82%);
+}
+.ps-body--home .ps-tile--has-photo .ps-tile__fill {
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.58) 0%, rgba(15, 23, 42, 0.08) 58%, transparent 85%);
 }
 .ps-tile:hover .ps-tile__fill {
   transform: scale(1.04);
   filter: brightness(1.08);
 }
+/* Fallback tiles (no photo yet): brighter glacier/sky fills */
+.ps-body--home .ps-tile--tandem { --tile-grad: linear-gradient(165deg, #bae6fd 0%, #e0f2fe 45%, #38bdf8 100%); }
+.ps-body--home .ps-tile--door { --tile-grad: linear-gradient(165deg, #c7d2fe 0%, #eef2ff 45%, #818cf8 100%); }
+.ps-body--home .ps-tile--canopy { --tile-grad: linear-gradient(165deg, #99f6e4 0%, #ecfdf5 45%, #2dd4bf 100%); }
+.ps-body--home .ps-tile--learn { --tile-grad: linear-gradient(165deg, #fde68a 0%, #fffbeb 48%, #fbbf24 100%); }
 .ps-tile--tandem { --tile-grad: linear-gradient(160deg, #1e4976 0%, #0f172a 50%, #0369a1 100%); }
 .ps-tile--door { --tile-grad: linear-gradient(160deg, #3730a3 0%, #0f172a 50%, #4f46e5 100%); }
 .ps-tile--canopy { --tile-grad: linear-gradient(160deg, #115e59 0%, #0f172a 50%, #0d9488 100%); }
@@ -292,14 +316,82 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 14px 12px;
-  background: linear-gradient(transparent, rgba(11, 18, 32, 0.92));
+  padding: 18px 14px 20px;
+  background: linear-gradient(transparent, rgba(11, 18, 32, 0.88));
   color: #fff;
   font-weight: 800;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  font-size: clamp(0.95rem, 2.1vw, 1.2rem);
+  letter-spacing: 0.12em;
+  line-height: 1.2;
   text-align: center;
   z-index: 2;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+.ps-body--home .ps-tile:not(.ps-tile--has-photo) .ps-tile__cap {
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.92));
+  color: var(--ps-light-text);
+  text-shadow: none;
+  font-size: clamp(1rem, 2.4vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  padding-bottom: 22px;
+}
+.ps-body--home .ps-tile--has-photo .ps-tile__cap {
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  letter-spacing: 0.14em;
+  padding: 22px 16px 24px;
+}
+
+/* Stats bar under tiles */
+.ps-home-stats {
+  background: var(--ps-stats-sky);
+  border-top: 1px solid var(--ps-stats-sky-border);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  padding: 0 16px;
+}
+.ps-home-stats__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.ps-home-stats__cell {
+  text-align: center;
+  padding: 22px 12px;
+  border-right: 1px solid var(--ps-stats-sky-border);
+}
+.ps-home-stats__cell:last-child {
+  border-right: none;
+}
+.ps-home-stats__value {
+  display: block;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 5vw, 2.35rem);
+  letter-spacing: 0.02em;
+  color: var(--ps-light-text);
+  line-height: 1.1;
+}
+.ps-home-stats__label {
+  display: block;
+  margin-top: 6px;
+  font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.72);
+}
+@media (max-width: 640px) {
+  .ps-home-stats__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ps-home-stats__cell:nth-child(2) {
+    border-right: none;
+  }
+  .ps-home-stats__cell:nth-child(1),
+  .ps-home-stats__cell:nth-child(2) {
+    border-bottom: 1px solid var(--ps-stats-sky-border);
+  }
 }
 
 .ps-wrap {
@@ -354,6 +446,18 @@
 .ps-btn--ghost:hover {
   border-color: var(--ps-ice);
   color: #fff !important;
+}
+.ps-body--home .ps-home-welcome .ps-btn--ghost,
+.ps-body--home .ps-home-services .ps-btn--ghost,
+.ps-body--home .ps-home-gift .ps-btn--ghost {
+  color: var(--ps-light-text) !important;
+  border-color: rgba(15, 23, 42, 0.25);
+}
+.ps-body--home .ps-home-welcome .ps-btn--ghost:hover,
+.ps-body--home .ps-home-services .ps-btn--ghost:hover,
+.ps-body--home .ps-home-gift .ps-btn--ghost:hover {
+  border-color: #0369a1;
+  color: #0369a1 !important;
 }
 .ps-about-section--letter {
   background: var(--ps-slate);
@@ -586,6 +690,39 @@
 .ps-home-gift {
   padding: 48px 0;
   border-top: 1px solid var(--ps-border);
+}
+.ps-body--home .ps-home-welcome,
+.ps-body--home .ps-home-services,
+.ps-body--home .ps-home-gift {
+  background: var(--ps-light-panel);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  color: var(--ps-light-text);
+}
+.ps-body--home .ps-home-welcome .ps-section__head h2,
+.ps-body--home .ps-home-services .ps-section__head h2,
+.ps-body--home .ps-home-gift .ps-section__head h2 {
+  color: var(--ps-light-text);
+}
+.ps-body--home .ps-home-welcome .ps-section__head p,
+.ps-body--home .ps-home-services .ps-section__head p,
+.ps-body--home .ps-home-gift .ps-section__head p {
+  color: var(--ps-light-muted);
+}
+.ps-body--home .ps-about-prose p {
+  color: var(--ps-light-muted);
+}
+.ps-body--home .ps-home-service-card {
+  background: #fff;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+.ps-body--home .ps-home-service-card p {
+  color: var(--ps-light-muted);
+}
+.ps-body--home .ps-home-service-card h3 {
+  color: var(--ps-light-text);
+}
+.ps-body--home .ps-home-service-card a {
+  color: #0369a1;
 }
 .ps-home-service-grid {
   display: grid;
