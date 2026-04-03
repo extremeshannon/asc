@@ -8,6 +8,8 @@ Docker maps this folder to /usr/share/nginx/site-assets in the container; nginx 
   gallery-02-landing.jpg
   gallery-03-solo.jpg
   gallery-04-climbout.jpg
+  team-franzi.jpg   (Franzi — /about team thumb + /team/franzi profile)
+  team-{slug}.jpg   (optional — same slug as /team/{slug}; list falls back to initials if missing)
 
 Generate them in platform-py from source PNGs:
 
