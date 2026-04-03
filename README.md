@@ -32,6 +32,8 @@ To regenerate from source PNGs in platform-py, run `process_public_site_photos.p
 - Shared header/footer: `site/nav.html`, `site/footer.html` (included via Nginx SSI)
 - Styles: `site/css/site.css`
 
+Contact, pricing, team, and homepage blurbs are synced from the public content on [alaskaskydivecenter.com](https://www.alaskaskydivecenter.com) (verify rates and hours when they change).
+
 ## Domain + HTTPS
 
 Point **dev.alaskaskydivecenter.com** at your VPS, then use host Nginx (or Caddy) to reverse-proxy to **127.0.0.1:8006** and terminate TLS. You only need this Docker container for the ASC site.
