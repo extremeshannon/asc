@@ -7,7 +7,7 @@
   <meta name="description" content="Tandem skydiving and the Alaska Skydive Program at Palmer Municipal Airport. Family-friendly drop zone in the Matanuska Valley, near Anchorage.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/site.css">
 </head>
 <body class="ps-body ps-body--home">
@@ -16,19 +16,22 @@
   <section class="ps-hero-full" aria-label="Hero">
     <img class="ps-hero-full__photo" src="/site-assets/hero-main.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" onload="this.closest('.ps-hero-full').classList.add('ps-hero-full--has-photo')" onerror="this.remove()">
     <div class="ps-hero-full__bg" aria-hidden="true"></div>
-    <div class="ps-hero-full__peak" role="note" aria-label="Pioneer Peak elevation">
-      <span class="ps-hero-full__peak-line" aria-hidden="true"></span>
-      <span class="ps-hero-full__peak-tag">PIONEER PEAK • 6,398′</span>
-    </div>
     <div class="ps-hero-full__inner">
-      <p class="ps-hero-full__eyebrow">PALMER MUNICIPAL AIRPORT • PALMER, ALASKA</p>
+      <div class="ps-hero-full__meta">
+        <span class="ps-hero-full__peak-badge">PIONEER PEAK • 6,398′</span>
+        <p class="ps-hero-full__eyebrow">PALMER MUNICIPAL AIRPORT • PALMER, ALASKA</p>
+      </div>
       <h1 class="ps-hero-full__title ps-hero-full__title--stacked">
         <span class="ps-hero-full__title-line">ALASKA</span>
         <span class="ps-hero-full__title-line ps-hero-full__title-line--accent">SKYDIVE</span>
         <span class="ps-hero-full__title-line">CENTER</span>
       </h1>
       <p class="ps-hero-full__sub">JUMP ABOVE THE CHUGACH • EXPERIENCE ALASKA FROM THE TOP</p>
-      <a class="ps-hero-full__cta" href="/booking">BOOK YOUR JUMP</a>
+      <div class="ps-hero-full__cta-row">
+        <a class="ps-hero-full__cta" href="/booking">BOOK YOUR JUMP</a>
+        <!-- Replace href with your real promo (YouTube, Vimeo, etc.) -->
+        <a class="ps-hero-full__cta ps-hero-full__cta--ghost" href="https://www.youtube.com/results?search_query=Alaska+Skydive+Center+Palmer" target="_blank" rel="noopener noreferrer">WATCH THE VIDEO</a>
+      </div>
     </div>
   </section>
 
