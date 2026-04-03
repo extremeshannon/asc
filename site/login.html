@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff sign in — Alaska Skydive Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="ps-body">
+<!--# include virtual="/nav.html" -->
+  <main class="ps-wrap" style="padding-top: 48px; padding-bottom: 64px; max-width: 520px;">
+    <h1 style="font-size: 1.5rem; margin-bottom: 12px;">Public site vs staff login</h1>
+    <p class="ps-about-prose" style="margin-bottom: 1rem;">
+      <strong>dev.alaskaskydivecenter.com</strong> is the Alaska Skydive Center marketing website (static pages, booking links).
+      Staff and operations use <strong>MalfunctionDZ</strong> on a different hostname — not this domain.
+    </p>
+    <p class="ps-about-prose" style="margin-bottom: 1.5rem;">
+      If you expected the orange MalfunctionDZ login here, your server nginx is sending this hostname to the wrong app
+      (<code>:8000</code> instead of the ASC site on <code>:8006</code>). Fix the <code>proxy_pass</code> for
+      <code>dev.alaskaskydivecenter.com</code> per <code>infra/nginx/dev.alaskaskydivecenter.com.conf</code> in the platform repo.
+    </p>
+    <p>
+      <a class="ps-btn ps-btn--primary" href="https://malfunctiondz.com/login">Open MalfunctionDZ sign in</a>
+    </p>
+    <p class="ps-about-prose" style="margin-top: 1.25rem; font-size: 0.9rem;">
+      Using a dev server? Try <a href="https://dev.malfunctiondz.com/login">dev.malfunctiondz.com/login</a> instead.
+    </p>
+    <p style="margin-top: 2rem;"><a href="/" class="ps-btn ps-btn--ghost">← ASC home</a></p>
+  </main>
+<!--# include virtual="/footer.html" -->
+</body>
+</html>
