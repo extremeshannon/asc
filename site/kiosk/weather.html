@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather kiosk — Alaska Skydive Center</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/kiosk/weather.css">
+</head>
+<body class="kw-body">
+  <div class="kw-viewport">
+    <div class="kw-controls" aria-label="Airport selection">
+      <span class="kw-controls__label">Airport</span>
+      <div class="kw-controls__airports">
+        <button type="button" class="kw-btn kw-btn-airport" data-airport="PAAQ">PAAQ</button>
+        <button type="button" class="kw-btn kw-btn-airport" data-airport="PAWS">PAWS</button>
+        <button type="button" class="kw-btn kw-btn-airport" data-airport="ANC">ANC</button>
+      </div>
+    </div>
+
+    <header class="kw-header">
+      <div class="kw-header__station">
+        <div class="kw-header__id" id="kw-header-id">PAAQ</div>
+        <p class="kw-header__sub" id="kw-header-sub">Palmer Municipal · Palmer, AK</p>
+      </div>
+      <div class="kw-header__flight" data-flt="unk">
+        <p class="kw-header__flight-cat kw-header__flight-cat--mvfr" id="kw-flight-cat">—</p>
+        <p class="kw-header__flight-label">Flight category</p>
+      </div>
+      <div class="kw-header__clock">
+        <p class="kw-header__time" id="kw-time-local">--:--:--</p>
+        <p class="kw-header__zulu" id="kw-time-zulu">--:--:--Z</p>
+        <p class="kw-header__date" id="kw-time-date">—</p>
+      </div>
+    </header>
+
+    <p class="kw-status kw-hidden" id="kw-status" role="status"></p>
+
+    <section class="kw-panel" aria-labelledby="kw-metar-title">
+      <div class="kw-panel__head">
+        <h2 class="kw-panel__title" id="kw-metar-title">METAR — decoded</h2>
+        <span class="kw-panel__meta" id="kw-metar-obs"></span>
+      </div>
+      <p class="kw-raw-metar" id="kw-metar-raw">—</p>
+      <div class="kw-grid4">
+        <div class="kw-tile">
+          <div class="kw-tile__label">Wind</div>
+          <div class="kw-tile__value" id="kw-wind-val">—</div>
+          <div class="kw-tile__sub" id="kw-wind-sub"></div>
+        </div>
+        <div class="kw-tile">
+          <div class="kw-tile__label">Visibility</div>
+          <div class="kw-tile__value kw-tile__value--green" id="kw-vis-val">—</div>
+          <div class="kw-tile__sub" id="kw-vis-sub"></div>
+        </div>
+        <div class="kw-tile">
+          <div class="kw-tile__label">Temperature</div>
+          <div class="kw-tile__value" id="kw-temp-val">—</div>
+          <div class="kw-tile__sub" id="kw-temp-sub"></div>
+        </div>
+        <div class="kw-tile">
+          <div class="kw-tile__label">Altimeter</div>
+          <div class="kw-tile__value kw-tile__value--white" id="kw-alt-val">—</div>
+          <div class="kw-tile__sub" id="kw-alt-sub"></div>
+        </div>
+      </div>
+      <div class="kw-sky">
+        <span class="kw-sky__cover" id="kw-sky-cover">—</span>
+        <span class="kw-sky__phrase" id="kw-sky-phrase">—</span>
+        <span class="kw-sky__note" id="kw-sky-ceil">—</span>
+      </div>
+      <div class="kw-tags" id="kw-tags"></div>
+    </section>
+
+    <section class="kw-panel" aria-labelledby="kw-rwy-title">
+      <div class="kw-panel__head">
+        <h2 class="kw-panel__title" id="kw-rwy-title">Runway analysis</h2>
+        <span class="kw-panel__meta" id="kw-rwy-blurb">—</span>
+      </div>
+      <p class="kw-panel__meta" id="kw-rwy-head" style="margin:0 0 10px;font-size:0.72rem;"></p>
+      <div class="kw-runways">
+        <div class="kw-rwy" data-rwy-slot="0">
+          <div class="kw-rwy__hdg" data-rwy-hdg>—</div>
+          <div class="kw-rwy__num" data-rwy-num>—</div>
+          <div class="kw-rwy__stats" data-rwy-stats>—</div>
+          <div class="kw-rwy__badge" data-rwy-badge></div>
+        </div>
+        <div class="kw-rwy" data-rwy-slot="1">
+          <div class="kw-rwy__hdg" data-rwy-hdg>—</div>
+          <div class="kw-rwy__num" data-rwy-num>—</div>
+          <div class="kw-rwy__stats" data-rwy-stats>—</div>
+          <div class="kw-rwy__badge" data-rwy-badge></div>
+        </div>
+      </div>
+      <p class="kw-legend">
+        <span>● HW = Headwind</span>
+        <span>● TW = Tailwind</span>
+        <span>● XW = Crosswind</span>
+      </p>
+    </section>
+
+    <section class="kw-panel" aria-labelledby="kw-aloft-title">
+      <div class="kw-panel__head">
+        <h2 class="kw-panel__title" id="kw-aloft-title">Winds aloft — FD</h2>
+        <span class="kw-panel__meta" id="kw-aloft-valid">—</span>
+      </div>
+      <p class="kw-panel__meta" style="margin:0 0 8px;font-size:0.68rem;">Alaska FD row <strong>ANC</strong> (Southcentral corridor). Verify chart for ops.</p>
+      <div class="kw-table-wrap">
+        <table class="kw-table" aria-label="Winds aloft">
+          <thead>
+            <tr>
+              <th>Alt</th>
+              <th>Dir</th>
+              <th>Kts</th>
+              <th>°C</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody id="kw-aloft-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="kw-panel" aria-labelledby="kw-fc-title">
+      <div class="kw-panel__head">
+        <h2 class="kw-panel__title" id="kw-fc-title">5-day forecast</h2>
+        <span class="kw-panel__meta" id="kw-fc-coords">—</span>
+      </div>
+      <div id="kw-fc-rows"></div>
+      <div class="kw-da" id="kw-da"></div>
+    </section>
+
+    <footer class="kw-footer">
+      <p class="kw-footer__disclaimer">
+        MalfunctionDZ · weather kiosk · data is for planning only — verify before flight
+      </p>
+      <button type="button" class="kw-footer__rotate" id="kw-rotate" aria-pressed="false" title="Toggle 90° layout for portrait-mounted TV">
+        <span aria-hidden="true">↻</span> Rotate view
+      </button>
+      <p class="kw-footer__stamp">
+        <span id="kw-footer-id">PAAQ</span> · <span id="kw-footer-loc">Palmer, AK</span> · <span id="kw-footer-z">—</span>
+      </p>
+    </footer>
+  </div>
+
+  <script src="/kiosk/weather.js"></script>
+</body>
+</html>

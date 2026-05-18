@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,400&family=Barlow+Condensed:wght@700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/site.css">
 </head>
-<body class="ps-body ps-body--home">
+<body class="ps-body ps-body--home" data-asc-nav="home">
 <!--# include virtual="/nav.html" -->
 
   <section class="ps-hero-full" aria-label="Hero">
@@ -75,64 +75,92 @@
     </section>
   </div>
 
-  <section class="ps-home-welcome ps-wrap ps-home-panel" aria-labelledby="welcome-heading">
-    <div class="ps-home-panel__inner">
-      <div class="ps-section__head ps-home-section-head">
-        <h2 id="welcome-heading">Skydiving in Alaska since 2013</h2>
-        <p>Welcome to Alaska Skydive Center</p>
-      </div>
-      <div class="ps-about-prose ps-home-prose">
-        <p>Alaska Skydive Center is nestled in the spectacular Matanuska Valley. Located at the Palmer Municipal Airport, every jump comes with exceptional scenery — glaciers, rugged peaks, and the kind of wide-open Alaska views visitors travel here for. We are a family-friendly operation and we hope you come fly with us.</p>
-        <p>We offer first-time tandem jumps, the Alaska Skydive Program for those working toward a license, and a welcoming community for experienced jumpers. Ask us about professional video and still photography for your tandem.</p>
-      </div>
-      <p class="ps-about-cta-row ps-home-cta-row">
-        <a href="/contact" class="ps-btn ps-btn--primary ps-home-btn">Contact us</a>
-        <a href="/about" class="ps-btn ps-btn--ghost ps-home-btn">Our story</a>
-      </p>
-    </div>
-  </section>
+  <div class="ps-home-below">
+    <div class="ps-home-below__sheet">
+      <section class="ps-home-welcome ps-home-panel" aria-labelledby="welcome-heading">
+        <div class="ps-home-panel__inner ps-home-welcome__inner">
+          <div class="ps-home-welcome__grid">
+            <div class="ps-home-welcome__copy">
+              <div class="ps-section__head ps-home-section-head">
+                <h2 id="welcome-heading">Skydiving in Alaska since 2013</h2>
+                <p>Welcome to Alaska Skydive Center</p>
+              </div>
+              <div class="ps-about-prose ps-home-prose">
+                <p>Alaska Skydive Center is nestled in the spectacular Matanuska Valley. Located at the Palmer Municipal Airport, every jump comes with exceptional scenery — glaciers, rugged peaks, and the kind of wide-open Alaska views visitors travel here for. We are a family-friendly operation and we hope you come fly with us.</p>
+                <p>We offer first-time tandem jumps, the Alaska Skydive Program for those working toward a license, and a welcoming community for experienced jumpers. Ask us about professional video and still photography for your tandem.</p>
+              </div>
+              <p class="ps-about-cta-row ps-home-cta-row">
+                <a href="/contact" class="ps-btn ps-btn--primary ps-home-btn">Contact us</a>
+                <a href="/about" class="ps-btn ps-btn--ghost ps-home-btn">Our story</a>
+              </p>
+            </div>
+            <figure class="ps-home-welcome__figure">
+              <img src="/site-assets/gallery-01-tandem.jpg" alt="Tandem skydiving over the Matanuska Valley" width="900" height="675" loading="lazy" decoding="async" onerror="this.closest('.ps-home-welcome__figure').classList.add('ps-home-welcome__figure--empty'); this.remove()">
+            </figure>
+          </div>
+        </div>
+      </section>
 
-  <section class="ps-home-services ps-wrap ps-home-panel ps-home-panel--alt" aria-labelledby="services-heading">
-    <div class="ps-home-panel__inner">
-      <div class="ps-section__head ps-home-section-head ps-home-section-head--center">
-        <h2 id="services-heading">What are you looking to do?</h2>
-        <p>Join us and experience Alaska the right way.</p>
-      </div>
-      <div class="ps-home-service-grid">
-        <article class="ps-home-service-card">
-          <span class="ps-home-service-card__num" aria-hidden="true">01</span>
-          <h3>Go tandem skydiving</h3>
-          <p>Not sure if skydiving is for you? Tandem pairs you with a trained professional for a safe first taste of freefall and canopy flight.</p>
-          <a href="/freefall">Experience freefall →</a>
-        </article>
-        <article class="ps-home-service-card">
-          <span class="ps-home-service-card__num" aria-hidden="true">02</span>
-          <h3>Learn to skydive</h3>
-          <p>Dreaming of your own parachute? Our instructors focus on safe, fun progression. We love welcoming new members to the ASC family.</p>
-          <a href="/asp">Alaska Skydive Program →</a>
-        </article>
-        <article class="ps-home-service-card">
-          <span class="ps-home-service-card__num" aria-hidden="true">03</span>
-          <h3>Fun jumpers</h3>
-          <p>Licensed skydivers: join loads, enjoy the scenery, and manifest with a crew that knows Alaska jumping.</p>
-          <a href="/prices#fun-jumpers">Fun-jumper prices →</a>
-        </article>
-      </div>
-    </div>
-  </section>
+      <section class="ps-home-services ps-home-panel ps-home-services--band" aria-labelledby="services-heading">
+        <div class="ps-home-panel__inner">
+          <div class="ps-section__head ps-home-section-head ps-home-section-head--center">
+            <h2 id="services-heading">What are you looking to do?</h2>
+            <p>Join us and experience Alaska the right way.</p>
+          </div>
+          <div class="ps-home-service-grid">
+            <article class="ps-home-service-card">
+              <div class="ps-home-service-card__media">
+                <img src="/site-assets/gallery-01-tandem.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('ps-home-service-card__media--fallback')">
+              </div>
+              <div class="ps-home-service-card__body">
+                <span class="ps-home-service-card__num" aria-hidden="true">01</span>
+                <h3>Go tandem skydiving</h3>
+                <p>Not sure if skydiving is for you? Tandem pairs you with a trained professional for a safe first taste of freefall and canopy flight.</p>
+                <a href="/freefall">Experience freefall →</a>
+              </div>
+            </article>
+            <article class="ps-home-service-card">
+              <div class="ps-home-service-card__media">
+                <img src="/site-assets/gallery-03-solo.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('ps-home-service-card__media--fallback')">
+              </div>
+              <div class="ps-home-service-card__body">
+                <span class="ps-home-service-card__num" aria-hidden="true">02</span>
+                <h3>Learn to skydive</h3>
+                <p>Dreaming of your own parachute? Our instructors focus on safe, fun progression. We love welcoming new members to the ASC family.</p>
+                <a href="/asp">Alaska Skydive Program →</a>
+              </div>
+            </article>
+            <article class="ps-home-service-card">
+              <div class="ps-home-service-card__media">
+                <img src="/site-assets/gallery-02-landing.jpg" alt="" width="640" height="360" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('ps-home-service-card__media--fallback')">
+              </div>
+              <div class="ps-home-service-card__body">
+                <span class="ps-home-service-card__num" aria-hidden="true">03</span>
+                <h3>Fun jumpers</h3>
+                <p>Licensed skydivers: join loads, enjoy the scenery, and manifest with a crew that knows Alaska jumping.</p>
+                <a href="/prices#fun-jumpers">Fun-jumper prices →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-  <section class="ps-home-gift ps-wrap ps-home-panel" aria-labelledby="gift-heading">
-    <div class="ps-home-panel__inner">
-      <div class="ps-section__head ps-home-section-head ps-home-section-head--center">
-        <h2 id="gift-heading">Offer an unforgettable gift</h2>
-        <p>Gift certificates are perfect for birthdays, holidays, and big milestones — give someone the gift of flight.</p>
-      </div>
-      <p class="ps-about-cta-row ps-home-cta-row ps-home-cta-row--center">
-        <a href="https://alaska.reservations.dizio.app/giftshop" class="ps-btn ps-btn--primary ps-home-btn" target="_blank" rel="noopener noreferrer">Buy a gift certificate</a>
-        <a href="/booking" class="ps-btn ps-btn--ghost ps-home-btn">Book an experience</a>
-      </p>
+      <section class="ps-home-gift ps-home-panel" aria-labelledby="gift-heading">
+        <div class="ps-home-panel__inner ps-home-gift__inner">
+          <div class="ps-home-gift__card">
+            <div class="ps-section__head ps-home-section-head ps-home-section-head--center">
+              <h2 id="gift-heading">Offer an unforgettable gift</h2>
+              <p>Gift certificates are perfect for birthdays, holidays, and big milestones — give someone the gift of flight.</p>
+            </div>
+            <p class="ps-about-cta-row ps-home-cta-row ps-home-cta-row--center">
+              <a href="https://alaska.reservations.dizio.app/giftshop" class="ps-btn ps-btn--primary ps-home-btn" target="_blank" rel="noopener noreferrer">Buy a gift certificate</a>
+              <a href="/booking" class="ps-btn ps-btn--ghost ps-home-btn">Book an experience</a>
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
+  </div>
 
 <!--# include virtual="/footer.html" -->
 </body>
